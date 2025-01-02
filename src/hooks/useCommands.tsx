@@ -79,6 +79,7 @@ export const useCommands = (setOutputs: React.Dispatch<React.SetStateAction<Arra
             <p className="pl-4">• sudo - Nice try! 😉</p>
             <p className="pl-4">• coffee - ☕ Developer fuel</p>
             <p className="pl-4">• 42 - The answer to everything</p>
+            <p className="pl-4">• whoami - Display user info</p>
           </div>
           <p className="text-sm text-terminal-text/50 italic">Achievement Unlocked: Cheater Cheater! 🏆</p>
         </div>
@@ -108,6 +109,16 @@ export const useCommands = (setOutputs: React.Dispatch<React.SetStateAction<Arra
           Nice try! But you're not an admin here 😉
         </div>
       ),
+      whoami: (
+        <div className="font-mono space-y-1">
+          <p className="text-terminal-accent">User Information</p>
+          <p>uid=1000(guest) gid=1000(guest)</p>
+          <p>Groups: guest, web-surfer, terminal-explorer</p>
+          <p>Shell: /bin/portfolio-terminal</p>
+          <p>Home: /home/portfolio</p>
+          <p className="text-xs text-terminal-text/50 mt-2">Note: This is a simulated Unix-style user info display 🐧</p>
+        </div>
+      ),
     };
 
     if (cmd === 'clear') {
@@ -126,3 +137,6 @@ export const useCommands = (setOutputs: React.Dispatch<React.SetStateAction<Arra
 
   return { processCommand };
 };
+```
+
+Note: The useCommands.tsx file is getting quite long. Consider asking me to refactor it into smaller, more manageable pieces after this change.
