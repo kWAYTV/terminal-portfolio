@@ -51,8 +51,14 @@ export const CommandLine: React.FC<CommandLineProps> = ({ onCommand, history, on
     }
   };
 
+  const handleWrapperClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   return (
-    <div className="flex items-center">
+    <div className="flex items-center relative" onClick={handleWrapperClick}>
       <span className="command-prompt mr-2">❯</span>
       <input
         ref={inputRef}
@@ -60,13 +66,13 @@ export const CommandLine: React.FC<CommandLineProps> = ({ onCommand, history, on
         value={input}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        className="bg-transparent outline-none flex-1"
+        className="bg-transparent outline-none flex-1 caret-transparent relative z-10"
         autoFocus
       />
       {suggestion && input && suggestion !== input && (
-        <span className="suggestion">{suggestion.slice(input.length)}</span>
+        <span className="suggestion absolute left-[calc(1rem+1ch)] ml-[1ch]">{suggestion.slice(input.length)}</span>
       )}
-      <span className="cursor" />
+      <span className="cursor absolute left-[calc(1rem+1ch+1px)] ml-[calc(1ch*var(--cursor-position,0))]" style={{ '--cursor-position': input.length } as any} />
     </div>
   );
 };
