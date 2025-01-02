@@ -177,6 +177,25 @@ Nice try, but I'm unhackable! 😉
           <p> └─ contact.enc</p>
         </div>
       ),
+      cheat: (
+        <div className="space-y-2">
+          <p className="text-yellow-400">🎮 Hidden Commands Found!</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-400">
+            <p>matrix - Enter the Matrix</p>
+            <p>coffee - Get virtual coffee</p>
+            <p>party - Start a party</p>
+            <p>rickroll - Never gonna give you up</p>
+            <p>42 - The answer to everything</p>
+            <p>flip - ¡ʎzɐɹɔ ʇıɥs s,ʇɐɥʇ</p>
+            <p>hack - Try to hack the system</p>
+            <p>sudo - Try to get permissions</p>
+            <p>whoami - Show current user</p>
+            <p>ls - List system files</p>
+            <p>time - Show current time</p>
+          </div>
+          <p className="text-sm text-gray-600">You found the cheat sheet! 🎉</p>
+        </div>
+      ),
     };
 
     if (cmd === "clear") {
