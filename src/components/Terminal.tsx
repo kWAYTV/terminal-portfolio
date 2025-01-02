@@ -16,22 +16,18 @@ export const Terminal = () => {
     }
   }, [outputs]);
 
-  const handleCommand = (command: string) => {
-    addToHistory(command);
-    processCommand(command);
-  };
-
   return (
-    <div className="container mx-auto p-4 h-screen flex items-center justify-center">
-      <div className="terminal-window w-full max-w-4xl">
+    <div className="container mx-auto p-4 h-screen flex items-center justify-center relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 via-blue-500/10 to-teal-500/10 animate-gradient-y pointer-events-none" />
+      <div className="terminal-window w-full max-w-4xl relative">
         <div className="terminal-title-bar">
           <div className="window-button bg-red-500"></div>
           <div className="window-button bg-yellow-500"></div>
           <div className="window-button bg-green-500"></div>
-          <span className="ml-4 text-sm">portfolio.sh</span>
+          <span className="ml-4 text-sm opacity-60">portfolio.sh</span>
         </div>
         <div className="terminal-content" ref={terminalRef}>
-          <div className="mb-4 text-terminal-accent">
+          <div className="mb-6 text-terminal-accent font-bold">
             Welcome to my interactive portfolio! Type 'help' to see available commands.
           </div>
           {outputs.map((output, index) => (

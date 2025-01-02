@@ -20,7 +20,7 @@ export default {
     extend: {
       colors: {
         terminal: {
-          bg: "#1E1E1E",
+          bg: "rgba(17, 17, 17, 0.8)",
           text: "#E4E4E4",
           accent: "#50FA7B",
           cyan: "#8BE9FD",
@@ -39,10 +39,24 @@ export default {
         typewriter: {
           to: { width: "100%" },
         },
+        "gradient-y": {
+          "0%, 100%": {
+            "background-size": "400% 400%",
+            "background-position": "center top"
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "center center"
+          }
+        },
       },
       animation: {
         blink: "blink 1s step-end infinite",
         typewriter: "typewriter 2s steps(40) forwards",
+        "gradient-y": "gradient-y 6s ease infinite",
+      },
+      backdropBlur: {
+        xs: '2px',
       },
     },
   },
