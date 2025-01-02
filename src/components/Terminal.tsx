@@ -1,46 +1,38 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { CommandLine } from "./CommandLine";
 import { CommandOutput } from "./CommandOutput";
 import { useCommandHistory } from "../hooks/useCommandHistory";
 import { useCommands } from "../hooks/useCommands";
-
-const ASCII_ART = [
-  "███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗",
-  "██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║",
-  "███████╗ ╚████╔╝ ███████╗   ██║   █████╗  ██╔████╔██║",
-  "╚════██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██║╚██╔╝██║",
-  "███████║   ██║   ███████║   ██║   ███████╗██║ ╚═╝ ██║",
-  "╚══════╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝",
-];
+import { useIsMobile } from "../hooks/use-mobile";
+import { useToast } from "../hooks/use-toast";
+import { cn } from "../lib/utils";
 
 export const Terminal = () => {
-  const [outputs, setOutputs] = useState<
+  const [outputs, setOutputs] = React.useState<
     Array<{ command: string; output: React.ReactNode }>
   >([
     {
       command: "init",
       output: (
-        <>
-          <div className="ascii-art">
-            {ASCII_ART.map((line, i) => (
-              <div key={i}>{line}</div>
-            ))}
-          </div>
-          <div className="mt-2">
-            <p>[SYSTEM] Initializing terminal...</p>
-            <p>[SYSTEM] Connection established...</p>
-            <p>[SYSTEM] Type 'help' for available commands</p>
-          </div>
-        </>
+        <div className="space-y-1 text-sm text-gray-400/90">
+          <p className="text-green-400">[ Terminal Portfolio v1.0.0 ]</p>
+          <p>Initializing system...</p>
+          <p className="text-green-400/90">● Connection established</p>
+          <p className="text-green-400/90">● Session started: guest@terminal</p>
+          <p className="text-green-400/90">● System ready</p>
+          <p className="mt-2">Type 'help' to see available commands</p>
+        </div>
       ),
     },
   ]);
 
-  const terminalRef = useRef<HTMLDivElement>(null);
+  const terminalRef = React.useRef<HTMLDivElement>(null);
   const { processCommand } = useCommands(setOutputs);
   const { history, addToHistory, navigateHistory } = useCommandHistory();
+  const isMobile = useIsMobile();
+  const { toast } = useToast();
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
@@ -49,10 +41,28 @@ export const Terminal = () => {
   const handleCommand = (command: string) => {
     addToHistory(command);
     processCommand(command);
+
+    // Show toast for easter egg commands
+    const easterEggs = [
+      "matrix",
+      "coffee",
+      "party",
+      "rickroll",
+      "42",
+      "flip",
+      "hack",
+    ];
+    if (easterEggs.includes(command.toLowerCase())) {
+      toast({
+        title: "🎉 Easter Egg Found!",
+        description: "You've discovered a hidden command!",
+        duration: 3000,
+      });
+    }
   };
 
   return (
-    <div className="terminal-window">
+    <div className={cn("terminal-window", isMobile && "inset-0 rounded-none")}>
       <div className="terminal-header">
         <div className="flex items-center gap-2">
           <div className="terminal-button close bg-[#ff5f56]" />
@@ -64,7 +74,7 @@ export const Terminal = () => {
           <span className="opacity-70">guest@terminal:~</span>
         </div>
       </div>
-      <div className="terminal-content" ref={terminalRef}>
+      <div ref={terminalRef} className="terminal-content">
         {outputs.map((output, index) => (
           <CommandOutput
             key={index}
