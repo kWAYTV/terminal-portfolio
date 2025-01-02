@@ -93,8 +93,8 @@ export const useCommands = (setOutputs: React.Dispatch<React.SetStateAction<Arra
     ) )
   ........
   |      |]
-  \      /
-   \____/
+  \\      /
+   \\____/
 `}
           </pre>
         </div>
@@ -137,6 +137,3 @@ export const useCommands = (setOutputs: React.Dispatch<React.SetStateAction<Arra
 
   return { processCommand };
 };
-```
-
-Note: The useCommands.tsx file is getting quite long. Consider asking me to refactor it into smaller, more manageable pieces after this change.
