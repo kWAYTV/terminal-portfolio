@@ -4,7 +4,7 @@ import { CommandOutput } from "./CommandOutput";
 import { useCommandHistory } from "../hooks/useCommandHistory";
 import { useCommands } from "../hooks/useCommands";
 import { useIsMobile } from "../hooks/use-mobile";
-import { useToast } from "../hooks/use-toast";
+import { toast } from "sonner";
 import { cn } from "../lib/utils";
 
 export const Terminal = () => {
@@ -30,7 +30,6 @@ export const Terminal = () => {
   const { processCommand } = useCommands(setOutputs);
   const { history, addToHistory, navigateHistory } = useCommandHistory();
   const isMobile = useIsMobile();
-  const { toast } = useToast();
 
   React.useEffect(() => {
     if (terminalRef.current) {
@@ -51,10 +50,10 @@ export const Terminal = () => {
       "42",
       "flip",
       "hack",
+      "sudo",
     ];
     if (easterEggs.includes(command.toLowerCase())) {
-      toast({
-        title: "🎉 Easter Egg Found!",
+      toast.success("Easter Egg Found! 🎉", {
         description: "You've discovered a hidden command!",
         duration: 3000,
       });

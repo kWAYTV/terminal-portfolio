@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 interface GitHubProject {
@@ -126,14 +125,13 @@ Nice try, but I'm unhackable! 😉
       coffee: (
         <div className="space-y-2">
           <p>☕ Here's your virtual coffee!</p>
-          <pre className="text-yellow-500">
+          <pre className="font-mono text-yellow-500 whitespace-pre leading-none">
             {`
-   ( (
-    ) )
-  ........
-  |      |]
-   \\    /    
-    \\__/
+     ) )
+    ( (
+  .........
+  |       |]
+   \\_____/
 `}
           </pre>
         </div>
