@@ -16,6 +16,11 @@ export const Terminal = () => {
     }
   }, [outputs]);
 
+  const handleCommand = (command: string) => {
+    addToHistory(command);
+    processCommand(command);
+  };
+
   return (
     <div className="container mx-auto p-4 h-screen flex items-center justify-center relative">
       <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 via-blue-500/10 to-teal-500/10 animate-gradient-y pointer-events-none" />
