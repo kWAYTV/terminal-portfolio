@@ -1,7 +1,5 @@
-import { Terminal } from '../components/Terminal';
+import { Terminal } from "../components/Terminal";
 
-const Index = () => {
+export default function Index() {
   return <Terminal />;
-};
-
-export default Index;
+}
