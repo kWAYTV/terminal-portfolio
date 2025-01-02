@@ -69,6 +69,45 @@ export const useCommands = (setOutputs: React.Dispatch<React.SetStateAction<Arra
           ¡ʎzɐɹɔ ʇıɥs s,ʇɐɥʇ 'ʎǝH
         </div>
       ),
+      cheat: (
+        <div className="space-y-4">
+          <p className="text-red-400 animate-pulse">🎮 CHEAT MODE ACTIVATED 🎮</p>
+          <div className="space-y-2 text-terminal-accent">
+            <p>🕹️ Hidden Commands Revealed:</p>
+            <p className="pl-4">• matrix - Enter the Matrix</p>
+            <p className="pl-4">• flip - ¿ʇxǝʇ dılɟ ǝɥʇ ʎɹʇ</p>
+            <p className="pl-4">• sudo - Nice try! 😉</p>
+            <p className="pl-4">• coffee - ☕ Developer fuel</p>
+            <p className="pl-4">• 42 - The answer to everything</p>
+          </div>
+          <p className="text-sm text-terminal-text/50 italic">Achievement Unlocked: Cheater Cheater! 🏆</p>
+        </div>
+      ),
+      coffee: (
+        <div className="space-y-2">
+          <p>☕ Here's your virtual coffee!</p>
+          <pre className="text-terminal-accent">
+{`
+   ( (
+    ) )
+  ........
+  |      |]
+  \      /
+   \____/
+`}
+          </pre>
+        </div>
+      ),
+      "42": (
+        <div className="text-terminal-accent">
+          🌌 The Answer to the Ultimate Question of Life, the Universe, and Everything
+        </div>
+      ),
+      sudo: (
+        <div className="text-terminal-error">
+          Nice try! But you're not an admin here 😉
+        </div>
+      ),
     };
 
     if (cmd === 'clear') {
